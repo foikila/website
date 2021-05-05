@@ -1,0 +1,85 @@
+body {
+    color: var(--body-color);
+    font-family: var(--body-font) !important;
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+
+    @include breakpoint(large) {
+        font-size: 1.15rem;
+    }
+
+    @include breakpoint(xxlarge) {
+        font-size: 1.25rem;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: var(--heading-color);
+    font-family: var(--base-font);
+    letter-spacing: -.01em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+
+    @include breakpoint(large) {
+        margin: 0 0 2rem;
+    }
+}
+
+a {
+    color: var(--heading-color);
+    text-decoration: none;
+    transition: color .3s var(--cubic-bezier);
+
+    @include breakpoint(large) {
+        &:hover,
+        &:focus {
+            color: var(--link-hover-color);
+        }
+    }
+}
+
+p {
+    font-size: 1.25rem;
+    color: var(--body-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.5 !important;
+
+    @include breakpoint(large) {
+        margin-bottom: 2rem;
+    }
+
+    @include breakpoint(large) {
+        font-size: 1.15rem;
+    }
+
+    @include breakpoint(xxlarge) {
+        font-size: 1.25rem;
+    }
+
+    @include breakpoint(xxxlarge) {
+        font-size: 1.25rem;
+    }
+}
+
+.h1 {
+    @extend h1;
+}
+.h2 {
+    @extend h2;
+}
+
+.h3 {
+    @extend h3;
+}
+
+.h4 {
+    @extend h4;
+}
+
+.h5 {
+    @extend h5;
+}

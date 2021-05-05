@@ -1,0 +1,91 @@
+// Helpers
+@import "helpers/variables";
+@import "helpers/mixins";
+
+// Base
+@import "base/buttons";
+@import "base/fonts";
+@import "base/typography";
+
+// Layouts
+@import "layouts/layout";
+
+*:focus {
+  outline: none;
+}
+
+// Overrides
+
+a, a:hover {
+  color: var(--link-color);
+}
+
+.navbar {
+
+  border-bottom: none !important;
+  display: flex;
+  align-items: center;
+  .links {
+    top: auto !important;
+  }
+
+  @include breakpoint (large) {
+    height: var(--header-height-lg) !important;
+  }
+}
+
+.nav-item {
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding-top: 0.2rem;
+
+  a:hover, a:not(.external):hover {
+    color: var(--link-hover-color);
+    border: none !important;
+  }
+}
+
+
+.nav-links {
+  a:hover, a:not(.external):hover {
+    color: var(--link-hover-color) !important;
+    border: none !important;
+  }
+
+  .router-link-exact-active, .router-link-active {
+    color: var(--link-hover-color) !important;
+    border: none !important;
+  }
+}
+
+.search-box input:focus {
+  cursor: auto;
+  border-color: var(--link-hover-color) !important;
+}
+
+.sidebar {
+  font-size: 18px !important;
+  border-right: none !important;
+  padding-top: 7rem !important;
+
+  .nav-links {
+    border: none !important;
+  }
+}
+
+a.sidebar-link.active {
+  color: var(--blue) !important;
+  border-left-color: var(--blue) !important;
+}
+
+a.sidebar-link:hover {
+  color: var(--link-hover-color) !important;
+}
+
+.theme-default-content:not(.custom) {
+  margin: 7rem auto 0 !important;
+}
+
+a.header-anchor {
+  color: var(--link-color) !important;
+}

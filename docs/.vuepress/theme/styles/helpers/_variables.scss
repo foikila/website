@@ -1,0 +1,70 @@
+:root {
+    // Colors
+    --black: #000;
+    --black-rgb: 0, 0, 0;
+
+    --dark-blue: #252947;
+    --dark-blue-rgb: 37, 41, 71;
+
+    --blue: #3E52FF;
+    --blue-rgb: 62, 85, 255;
+    --light-blue: rgba(var(--dark-blue-rgb), .04);
+
+    --cyan: #37D6B9;
+    --cyan-rgb: 55, 214, 185;
+
+    --orange: #FFAB2D;
+    --orange--rgb: 255, 171, 45;
+
+    --beige: #E8E2CD;
+    --beige-rgb: 232, 226, 205;
+
+    --white: #fff;
+    --white-rgb: 255, 255, 255;
+
+    --heading-color: var(--dark-blue);
+    --body-color: rgba(var(--dark-blue-rgb), .75);
+
+    --link-color: var(--blue);
+    --link-hover-color: var(--blue);
+
+    --border-color: rgba(var(--dark-blue-rgb), .12);
+
+    // Fonts
+    --heading-font: "Adieu", sans-serif;
+    --body-font: "Space Grotesk", sans-serif;
+
+    // Grid
+    --site-width: 1680px;
+
+    // Header
+    --header-height-sm: 4rem;
+    --header-height-lg: 8rem;
+    --header-height-lg-sticky: 7rem;
+
+    // Cubic Bezier
+    --cubic-bezier: cubic-bezier(.165,.84,.44, 1);
+}
+
+// Breakpoints
+$breakpoints: (
+    small: 0,
+    medium: 640px,
+    large: 1024px,
+    xlarge: 1200px,
+    xxlarge: 1440px,
+    xxxlarge: 1920px,
+    xxxxlarge: 2200px,
+
+    // Mobile nav breakpoint
+    navigation: 1140px,
+);
+
+// Heading sizes
+$heading-sizes: (
+    h1: 96px 80px 64px 48px 36px,
+    h2: 72px 64px 48px 32px 28px,
+    h3: 48px 40px 32px 24px 24px,
+    h4: 32px 28px 24px 20px 20px,
+    h5: 24px 22px 20px 16px 16px,
+);

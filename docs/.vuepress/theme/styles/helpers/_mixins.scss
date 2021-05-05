@@ -1,0 +1,129 @@
+
+@mixin link-underline {
+    position: relative;
+
+    &::after {
+        background: var(--link-color);
+        bottom: 0;
+        content: "";
+        height: 1px;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        transition-duration: .3s;
+        transition-property: width;
+        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 0;
+        z-index: 1;
+    }
+
+    @include breakpoint(large) {
+        &:hover {
+
+            &::after {
+                left: 0;
+                right: auto;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@mixin rgba-background($hexcolor, $opacity) {
+  background-color: $hexcolor;
+  background-color: rgba($hexcolor, $opacity);
+}
+
+@function strip-units($value) {
+    @return $value / ($value * 0 + 1);
+}
+@mixin heading-size($font-size, $base: 16px) {
+    $remsize: (strip-units($font-size) / strip-units($base));
+    font-size: #{$remsize}rem;
+}
+@mixin heading($heading) {
+    $sizes: map-get($heading-sizes, $heading);
+
+    @include heading-size(nth($sizes, 5));
+
+    @media only screen and (min-width: map-get($breakpoints, medium)) {
+        @include heading-size(nth($sizes, 4));
+    }
+
+    @media only screen and (min-width: map-get($breakpoints, large)) {
+        @include heading-size(nth($sizes, 3));
+    }
+
+    @media only screen and (min-width: map-get($breakpoints, xxlarge)) {
+        @include heading-size(nth($sizes, 2));
+    }
+
+    @media only screen and (min-width: map-get($breakpoints, xxxlarge)) {
+        @include heading-size(nth($sizes, 1));
+    }
+}
+
+$headings: h1 h2 h3 h4 h5;
+@each $heading in $headings {
+    #{$heading}, .#{$heading} {
+        @include heading($heading);
+    }
+}
+
+@mixin breakpoint($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+// Saturation
+@function saturation($color, $saturationMultiplier){
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  @return hsl($color-h, calc(#{$color-s} * #{$saturationMultiplier}), $color-l);
+}
+
+// Responsive ratio
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            padding-top: $padding;
+            width: 100%;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+// Placeholders
+@mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+// Delays
+// Example : @include delay(animation, 8, 0.25s);
+@mixin delay($rule, $number, $value) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      #{$rule}-delay: (#{$i*$value});
+    }
+  }
+}
+
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}

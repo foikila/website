@@ -1,0 +1,107 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+
+    &.nav-is-active,
+    &.is-locked {
+        overflow: hidden !important;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    padding-top: var(--header-height-sm);
+    overflow-x: scroll;
+    height: 100%;
+
+
+    @include breakpoint(large) {
+        padding-top: var(--header-height-lg);
+    }
+}
+
+#app {
+  height: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.theme-container {
+  height: 100%;
+}
+
+.o-main {
+    overflow: hidden;
+}
+
+.o-container {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding: 0 1.5rem;
+
+    @include breakpoint(medium) {
+        padding: 0 4rem;
+    }
+
+    @include breakpoint(large) {
+        padding: 0 6rem;
+    }
+
+    @include breakpoint(xlarge) {
+        max-width: 90%;
+    }
+
+    @include breakpoint(xxxlarge) {
+        max-width: var(--site-width);
+    }
+
+    &--expanded {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+.o-grid {
+    display: grid;
+    grid-gap: 2rem;
+
+    @include breakpoint(medium) {
+        grid-gap: 4rem;
+    }
+
+    @include breakpoint(xxlarge) {
+        grid-gap: 6rem;
+    }
+}
+
+.js-reveal {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: 1.5s;
+    transition-timing-function: var(--cubic-bezier);
+    transform: translateY(3rem);
+
+    &.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
